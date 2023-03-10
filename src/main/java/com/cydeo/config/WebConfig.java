@@ -13,5 +13,8 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addViewController("/login").setViewName("login");
         registry.addViewController("/").setViewName("login");
     }
+// for STATIC pages where you pass endpoint (/welcome) and are returned a view
+// you do NOT need a Controller - you can just add the above Config method
+// which has a simple mechanism of: get endpoint -> return view
 
 }
