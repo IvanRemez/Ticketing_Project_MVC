@@ -113,7 +113,7 @@
                                                 <div class="form-group">
                                                     <label>Choose a Role</label>
                                                     <select name="role" class="custom-select" th:field="*{role}">
-                                                        <option th:value="''" th:text="Select"></option>
+<!--                                                        <option th:value="''" th:text="Select"></option>-->
                                                         <!---- Default display of "Select" ^^ for the dropdown menu --->
                                                         <option th:each="role : ${roles}" th:value="${role.id}"
                                                                 th:text="${role.description}">
@@ -180,11 +180,11 @@
 <!--                                                role.description to see "Admin" instead of whole Role Object-->
 
                                                 <td class="actions">
-                                                    <a href="#">
+                                                    <a th:href="@{/user/update/{id}(id=${user.username})}">
                                                         <button type="button" class="btn btn-warning btn-sm">Update
                                                         </button>
                                                     </a>
-                                                    <a href="#" class="delete-row">
+                                                    <a th:href="@{/user/delete/{id}(id=${user.username})}" class="delete-row">
                                                         <button type="button" class="btn btn-secondary btn-sm">Delete
                                                         </button>
                                                     </a>

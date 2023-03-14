@@ -22,7 +22,7 @@ public class DataGenerator implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-// This run method will execute 1st BEFORE ANYTHING when App starts - like static block
+// This ^^ run method will execute 1st BEFORE ANYTHING when App starts - like static block
 
 // create some roles and put them in DB:
         RoleDTO adminRole = new RoleDTO(1L, "Admin");
