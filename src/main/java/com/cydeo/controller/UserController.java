@@ -21,11 +21,10 @@ public class UserController {
 
     @GetMapping("/create")
     public String createUser(Model model, UserDTO userDTO) {
-
+//  Form:
         model.addAttribute("user", new UserDTO());
-
         model.addAttribute("roles", roleService.findAll());
-
+//  Table:
         model.addAttribute("users", userService.findAll());
 
         return "/user/create";  // GET - create.html view
@@ -51,10 +50,11 @@ public class UserController {
     public String editUser(@PathVariable("username") String username, Model model) {
 // Always start with return html and then check html for what attributes you need ${...}
 
-    // user object ${user} (user who was selected to be updated)
+//  User being updated:
         model.addAttribute("user", userService.findById(username));
-
+//  Role list:
         model.addAttribute("roles", roleService.findAll());
+//  User List Table:
         model.addAttribute("users", userService.findAll());
 
         return "/user/update";

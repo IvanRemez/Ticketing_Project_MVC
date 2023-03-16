@@ -23,11 +23,10 @@ public class ProjectController {
 
     @GetMapping("/create")
     public String createProject(Model model) {
-
+//  Form:
         model.addAttribute("project", new ProjectDTO());
-
         model.addAttribute("managers", userService.findManagers());
-
+//  Table:
         model.addAttribute("projects", projectService.findAll());
 
         return "/project/create";
@@ -61,9 +60,11 @@ public class ProjectController {
     public String editProject(@PathVariable("projectCode") String projectCode, Model model) {
 // Always start with return html and then check html for what attributes you need ${...}
 
+//  Project being updated:
         model.addAttribute("project", projectService.findById(projectCode));
-
+//  Manager list:
         model.addAttribute("managers", userService.findManagers());
+//  Project list Table:
         model.addAttribute("projects", projectService.findAll());
 
         return "/project/update";
