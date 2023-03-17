@@ -18,6 +18,12 @@ public class RoleDTOConverter implements Converter<String, RoleDTO> {
 
     @Override
     public RoleDTO convert(String source) {
+
+//  Select option -> ""
+        if (source == null || source.equals("")) {
+            return null;
+        }// if user chooses Select, @NotNull validation is activated
+
         return roleService.findById(Long.parseLong(source));
     }
 }
