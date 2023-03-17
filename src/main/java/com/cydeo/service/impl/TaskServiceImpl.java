@@ -49,14 +49,12 @@ public class TaskServiceImpl extends AbstractMapService<TaskDTO, Long> implement
     @Override
     public void update(TaskDTO task) {
 
-        if (task.getTaskStatus() == null) {
-            task.setTaskStatus(findById(task.getId()).getTaskStatus());
-        }// captures Status of Task being updated and sets it again prior to saving in DB
+        task.setTaskStatus(findById(task.getId()).getTaskStatus());
+        // captures Status of Task being updated and sets it again prior to saving in DB
         // Also needed b/c there is no input Status field in form
 
-        if (task.getAssignedDate() == null) {
-            task.setAssignedDate(findById(task.getId()).getAssignedDate());
-        }// captures assignedDate of Task being updated and sets it again prior to saving in DB
+        task.setAssignedDate(findById(task.getId()).getAssignedDate());
+        // captures assignedDate of Task being updated and sets it again prior to saving in DB
         // Also needed b/c there is no input assignedDate field in form
 
         super.update(task.getId(), task);
@@ -83,5 +81,14 @@ public class TaskServiceImpl extends AbstractMapService<TaskDTO, Long> implement
         return findAll().stream()
                 .filter(task -> task.getTaskStatus().equals(status))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public void updateStatus(TaskDTO task) {
+
+        findById(task.getId()).setTaskStatus(task.getTaskStatus());
+        // Status updated
+        update(task);
+        // Task updated with NEW Status
     }
 }
