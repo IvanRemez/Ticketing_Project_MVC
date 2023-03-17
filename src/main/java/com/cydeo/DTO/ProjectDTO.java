@@ -23,4 +23,21 @@ public class ProjectDTO {
     private String projectDetail;
     private Status projectStatus;
 
+    private int completeTaskCounts;
+    private int unfinishedTaskCounts;
+//  AllArgsConstructor (w/ ^^ these extra fields) used in Project Status page/view
+
+//  Need to add another Constructor which excludes these fields to use in all
+//  other views which do not require them
+    public ProjectDTO(String projectName, String projectCode, UserDTO assignedManager,
+                      LocalDate startDate, LocalDate endDate, String projectDetail,
+                      Status projectStatus) {
+        this.projectName = projectName;
+        this.projectCode = projectCode;
+        this.assignedManager = assignedManager;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.projectDetail = projectDetail;
+        this.projectStatus = projectStatus;
+    }
 }

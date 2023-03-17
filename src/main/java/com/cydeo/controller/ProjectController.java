@@ -9,6 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Controller
 @RequestMapping("/project")
 public class ProjectController {
@@ -78,5 +81,18 @@ public class ProjectController {
         return "redirect:/project/create";
     }
 
+    @GetMapping("/manager/project-status")
+    public String getProjectByManager(Model model) {
+
+//  Picking one manager to display his/her projects since security/login
+//  function is not ready yet:
+        UserDTO manager = userService.findById("john@cydeo.com");
+
+        List<ProjectDTO> projects = projectService.getCountedListOfProjectDTO(manager);
+
+        model.addAttribute("projects", projects);
+
+        return "/manager/project-status";
+    }
 
 }
